@@ -79,7 +79,7 @@ importers:
         version: 16.1.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       next-template:
         specifier: 'file:'
-        version: chinou-bako-release@file:(@babel/core@7.29.0)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(tailwindcss@4.3.0)
+        version: bbx-release@file:(@babel/core@7.29.0)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(tailwindcss@4.3.0)
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -1835,7 +1835,7 @@ packages:
   character-reference-invalid@2.0.1:
     resolution: {integrity: sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==}
 
-  'chinou-bako-release@file:':
+  'bbx-release@file:':
     resolution: {directory: '', type: directory}
 
   class-variance-authority@0.7.1:
@@ -5229,7 +5229,7 @@ snapshots:
 
   character-reference-invalid@2.0.1: {}
 
-  chinou-bako-release@file:(@babel/core@7.29.0)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(tailwindcss@4.3.0):
+  bbx-release@file:(@babel/core@7.29.0)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(tailwindcss@4.3.0):
     dependencies:
       '@hookform/resolvers': 5.4.0(react-hook-form@7.76.0(react@19.2.6))
       '@mdx-js/loader': 3.1.1

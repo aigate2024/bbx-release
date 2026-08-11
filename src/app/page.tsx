@@ -6,7 +6,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 const V = process.env.VERSION ?? '1.0.1'
-const DL = `https://github.com/jyoketsu/chinou-bako-release/releases/download/v${V}`
+const DL = `https://github.com/aigate2024/bbx-release/releases/download/v${V}`
 const PROXY_PREFIX = 'https://v4.gh-proxy.org/'
 
 const installers = [
