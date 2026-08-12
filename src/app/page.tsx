@@ -24,6 +24,8 @@ export default function Home() {
   }, [])
 
   const downloadBase = `https://github.com/aigate2024/bbx-release/releases/download/v${version}`
+  const isBeta = version.toLowerCase().includes('beta')
+  const appName = isBeta ? 'AI百宝箱内测版.app' : 'AI百宝箱.app'
   const installers = [
     {
       title: 'macOS（Apple 芯片）',
@@ -107,7 +109,7 @@ export default function Home() {
       <p className='w-full text-3xl font-bold flex justify-center items-center gap-2'>
         <img src={`${BASE}/logo/icon.png`} alt="" className="size-10" />
         <span>AI百宝箱</span>
-        {version.toLowerCase().includes('beta') && <span>内测版</span>}
+        {isBeta && <span>内测版</span>}
       </p>
       <p className="text-center text-sm text-muted-foreground">v{version}</p>
       <div>
@@ -151,8 +153,8 @@ export default function Home() {
           <p className="text-sm font-semibold text-yellow-800 dark:text-yellow-200 mb-2">macOS 用户注意</p>
           <p className="text-sm text-yellow-700 dark:text-yellow-300 mb-3">安装后，请在终端中执行以下命令：</p>
           <div className="bg-gray-900 text-gray-100 p-3 rounded text-xs font-mono space-y-1 overflow-x-auto">
-            <div>xattr -cr /Applications/AI百宝箱.app</div>
-            <div>codesign --force --deep --sign - /Applications/AI百宝箱.app</div>
+            <div>xattr -cr /Applications/{appName}</div>
+            <div>codesign --force --deep --sign - /Applications/{appName}</div>
           </div>
         </div>
       </div>
