@@ -11,6 +11,7 @@ const DEFAULT_VERSION = process.env.VERSION ?? '1.0.1'
 
 export default function Home() {
   const [version, setVersion] = useState(DEFAULT_VERSION)
+  const [versionReady, setVersionReady] = useState(false)
   const [proxyEnabled, setProxyEnabled] = useState(false)
   const wasAwayRef = useRef(false)
 
@@ -19,6 +20,7 @@ export default function Home() {
     if (queryVersion) {
       setVersion(queryVersion)
     }
+    setVersionReady(true)
   }, [])
 
   const downloadBase = `https://github.com/aigate2024/bbx-release/releases/download/v${version}`
@@ -95,7 +97,13 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="space-y-4 max-w-2xl mx-auto px-4 pt-[8%]">
+    <>
+      {!versionReady && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm">
+          <p className="text-sm text-muted-foreground">正在获取版本信息…</p>
+        </div>
+      )}
+      <div className={`space-y-4 max-w-2xl mx-auto px-4 pt-[8%] ${!versionReady ? 'pointer-events-none select-none' : ''}`}>
       <p className='w-full text-3xl font-bold flex justify-center items-center gap-2'>
         <img src={`${BASE}/logo/icon.png`} alt="" className="size-10" />
         <span>AI百宝箱</span>
@@ -126,7 +134,8 @@ export default function Home() {
               <Link
                 key={href}
                 className="flex items-center gap-3 rounded-lg border bg-muted/30 p-3 transition-colors hover:bg-muted"
-                href={href}
+                href={versionReady ? href : '#'}
+                aria-disabled={!versionReady}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -147,6 +156,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
