@@ -5,46 +5,55 @@ import Link from 'next/link'
 import { Checkbox } from '@/components/ui/checkbox'
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
-const V = process.env.VERSION ?? '1.0.1'
-const DL = `https://github.com/aigate2024/bbx-release/releases/download/v${V}`
 const PROXY_PREFIX = 'https://v4.gh-proxy.org/'
 
-const installers = [
-  {
-    title: 'macOS（Apple 芯片）',
-    logo: '/logo/mac.svg',
-    invertOnDark: true,
-    href: `${DL}/aigate-image-${V}-arm64.dmg`,
-  },
-  {
-    title: 'macOS（Intel 芯片）',
-    logo: '/logo/mac.svg',
-    invertOnDark: true,
-    href: `${DL}/aigate-image-${V}-x64.dmg`,
-  },
-  {
-    title: 'Linux DEB',
-    logo: '/logo/linux.svg',
-    invertOnDark: false,
-    href: `${DL}/aigate-image_${V}_amd64.deb`,
-  },
-  {
-    title: 'Linux AppImage',
-    logo: '/logo/linux.svg',
-    invertOnDark: false,
-    href: `${DL}/aigate-image-${V}.AppImage`,
-  },
-  {
-    title: 'Windows',
-    logo: '/logo/windows.svg',
-    invertOnDark: true,
-    href: `${DL}/aigate-image-${V}-setup.exe`,
-  },
-]
+const DEFAULT_VERSION = process.env.VERSION ?? '1.0.1'
 
 export default function Home() {
+  const [version, setVersion] = useState(DEFAULT_VERSION)
   const [proxyEnabled, setProxyEnabled] = useState(false)
   const wasAwayRef = useRef(false)
+
+  useEffect(() => {
+    const queryVersion = new URLSearchParams(window.location.search).get('version')?.trim()
+    if (queryVersion) {
+      setVersion(queryVersion)
+    }
+  }, [])
+
+  const downloadBase = `https://github.com/aigate2024/bbx-release/releases/download/v${version}`
+  const installers = [
+    {
+      title: 'macOS（Apple 芯片）',
+      logo: '/logo/mac.svg',
+      invertOnDark: true,
+      href: `${downloadBase}/aigate-image-${version}-arm64.dmg`,
+    },
+    {
+      title: 'macOS（Intel 芯片）',
+      logo: '/logo/mac.svg',
+      invertOnDark: true,
+      href: `${downloadBase}/aigate-image-${version}-x64.dmg`,
+    },
+    // {
+    //   title: 'Linux DEB',
+    //   logo: '/logo/linux.svg',
+    //   invertOnDark: false,
+    //   href: `${downloadBase}/aigate-image_${version}_amd64.deb`,
+    // },
+    // {
+    //   title: 'Linux AppImage',
+    //   logo: '/logo/linux.svg',
+    //   invertOnDark: false,
+    //   href: `${downloadBase}/aigate-image-${version}.AppImage`,
+    // },
+    {
+      title: 'Windows',
+      logo: '/logo/windows.svg',
+      invertOnDark: true,
+      href: `${downloadBase}/aigate-image-${version}-setup.exe`,
+    },
+  ]
 
   useEffect(() => {
     const reloadIfReturned = () => {
@@ -90,8 +99,9 @@ export default function Home() {
       <p className='w-full text-3xl font-bold flex justify-center items-center gap-2'>
         <img src={`${BASE}/logo/icon.png`} alt="" className="size-10" />
         <span>AI百宝箱</span>
+        {version.toLowerCase().includes('beta') && <span>内测版</span>}
       </p>
-      <p className="text-center text-sm text-muted-foreground">v{V}</p>
+      <p className="text-center text-sm text-muted-foreground">v{version}</p>
       <div>
         <h2 className="mb-3 text-lg font-semibold">下载安装包</h2>
 
