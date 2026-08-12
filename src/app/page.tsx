@@ -25,7 +25,7 @@ export default function Home() {
 
   const downloadBase = `https://github.com/aigate2024/bbx-release/releases/download/v${version}`
   const isBeta = version.toLowerCase().includes('beta')
-  const appName = isBeta ? 'AI百宝箱内测版.app' : 'AI百宝箱.app'
+  const appName = isBeta ? 'AI百宝箱内测版.app' : 'AI百宝箱2026.app'
   const installers = [
     {
       title: 'macOS（Apple 芯片）',
