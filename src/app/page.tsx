@@ -31,31 +31,31 @@ export default function Home() {
       title: 'macOS（Apple 芯片）',
       logo: '/logo/mac.svg',
       invertOnDark: true,
-      href: `${downloadBase}/aigate-image-${version}-arm64.dmg`,
+      href: `${downloadBase}/bbx-image-${version}-arm64.dmg`,
     },
     {
       title: 'macOS（Intel 芯片）',
       logo: '/logo/mac.svg',
       invertOnDark: true,
-      href: `${downloadBase}/aigate-image-${version}-x64.dmg`,
+      href: `${downloadBase}/bbx-image-${version}-x64.dmg`,
     },
     // {
     //   title: 'Linux DEB',
     //   logo: '/logo/linux.svg',
     //   invertOnDark: false,
-    //   href: `${downloadBase}/aigate-image_${version}_amd64.deb`,
+    //   href: `${downloadBase}/bbx-image_${version}_amd64.deb`,
     // },
     // {
     //   title: 'Linux AppImage',
     //   logo: '/logo/linux.svg',
     //   invertOnDark: false,
-    //   href: `${downloadBase}/aigate-image-${version}.AppImage`,
+    //   href: `${downloadBase}/bbx-image-${version}.AppImage`,
     // },
     {
       title: 'Windows',
       logo: '/logo/windows.svg',
       invertOnDark: true,
-      href: `${downloadBase}/aigate-image-${version}-setup.exe`,
+      href: `${downloadBase}/bbx-image-${version}-setup.exe`,
     },
   ]
 
